@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import Aos from 'aos';
-import SlideFlow from '../Components/SlideFlow';
+
 import { Slide, toast } from 'react-toastify';
 import LimitedCard from '../Components/LimitedCard';
+import Carousel from '../Components/Carousel';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   // aos
@@ -42,7 +44,7 @@ const Home = () => {
   return (
     <div className='font-roboto flex flex-col overflow-hidden'>
       <div className='my-5'>
-        <SlideFlow />
+        <Carousel />
       </div>
 
       {/* loading */}
@@ -60,9 +62,11 @@ const Home = () => {
           ))}
         </div>
       </div>
-      
+
       <div className='flex items-center justify-center my-5'>
-        <button className='btn btn-success'>Show more!</button>
+        <Link to={'/Browse'} className='btn btn-success'>
+          Show more!
+        </Link>
       </div>
     </div>
   );

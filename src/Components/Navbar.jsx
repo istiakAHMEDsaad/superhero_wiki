@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import userIcon from '../assets/user.png';
 
 const Navbar = () => {
@@ -29,13 +30,13 @@ const Navbar = () => {
             className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'
           >
             <li>
-              <a>Home</a>
+              <Link to={'/'}>Home</Link>
             </li>
             <li>
-              <a>Browse</a>
+              <Link to={'/browse'}>Browse</Link>
             </li>
             <li>
-              <a>About</a>
+              <Link to={'/about'}>About</Link>
             </li>
           </ul>
         </div>
