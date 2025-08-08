@@ -3,9 +3,11 @@ import userIcon from '../assets/user.png';
 const Navbar = () => {
   return (
     <div className='navbar bg-base-100 shadow-sm'>
+      {/* Navbar Start */}
       <div className='navbar-start'>
         <div className='dropdown'>
           <div tabIndex={0} role='button' className='btn btn-ghost btn-circle'>
+            {/* Hamburger icon */}
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-5 w-5'
@@ -27,10 +29,10 @@ const Navbar = () => {
             className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'
           >
             <li>
-              <a>Homepage</a>
+              <a>Home</a>
             </li>
             <li>
-              <a>Portfolio</a>
+              <a>Browse</a>
             </li>
             <li>
               <a>About</a>
@@ -39,10 +41,12 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Navbar Center */}
       <div className='navbar-center'>
-        <a className='btn btn-ghost text-xl'>Superhero WIKI</a>
+        <a className='btn btn-ghost text-xl font-playwrite'>Superverse</a>
       </div>
 
+      {/* Navbar End */}
       <div className='navbar-end'>
         {/* Search Button */}
         {/* <div className='dropdown dropdown-end'>

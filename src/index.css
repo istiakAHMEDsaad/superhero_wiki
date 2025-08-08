@@ -1,2 +1,12 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+@import 'tailwindcss';
 @plugin "daisyui";
+
+@font-face {
+  font-family: Playwrite;
+  src: url('./assets/fonts/PlaywriteAUQLD-VariableFont_wght.ttf');
+}
+@theme {
+  --font-playwrite: Playwrite, 'sans-serif';
+  --font-roboto: Roboto, 'sans-serif';
+}
