@@ -4,6 +4,7 @@ import ErrorPage from './error-page';
 import Home from '../Page/Home';
 import Browse from '../Page/Browse';
 import About from '../Page/About';
+import HeroDetails from '../Page/HeroDetails';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />,
+      },
+      {
+        path: '/hero-details/:id',
+        element: <HeroDetails />,
       },
     ],
   },

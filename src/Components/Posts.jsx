@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Posts = ({ posts, loading }) => {
   if (loading) {
@@ -13,7 +14,7 @@ const Posts = ({ posts, loading }) => {
     // card container
     <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2'>
       {posts.map((post, idx) => (
-        <div
+        <Link to={`/hero-details/${post?.id}`}
           key={idx}
           className='flex flex-col border border-gray-300 p-1 rounded-xl shadow hover:scale-[0.99] transition-transform'
         >
@@ -43,15 +44,22 @@ const Posts = ({ posts, loading }) => {
               value={post?.powerstats?.intelligence}
               max='100'
             ></progress>
-            
+
             <p>Strength</p>
             <progress
               className='progress w-56'
               value={post?.powerstats?.strength}
               max='100'
             ></progress>
+            
+            <p>Power</p>
+            <progress
+              className='progress w-56'
+              value={post?.powerstats?.power}
+              max='100'
+            ></progress>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

@@ -1,7 +1,10 @@
+import { Typewriter } from 'react-simple-typewriter';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Posts from '../Components/Posts';
 import Paginations from '../Components/Paginations';
+import { Slide, toast } from 'react-toastify';
+import { GiMagnifyingGlass } from 'react-icons/gi';
 
 const Browse = () => {
   const [posts, setPosts] = useState([]);
@@ -23,8 +26,19 @@ const Browse = () => {
         );
         setPosts(res?.data?.items || []);
         setOriginalPosts(res?.data?.items || []);
-      } catch (error) {
-        console.error('Error fetching superheroes:', error);
+      } catch (err) {
+        console.error('Error fetching superheroes:', err);
+        toast.error(`${err?.message}`, {
+          position: 'top-center',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          transition: Slide,
+        });
       }
       setLoading(false);
     };
@@ -62,7 +76,21 @@ const Browse = () => {
   return (
     <div className='mt-8 font-roboto'>
       {/* Title */}
-      <div className='divider text-3xl text-gray-700'>Superhero Khojo</div>
+      <div className='divider text-3xl text-gray-700'>
+        Superhero
+        <span className='flex items-center justify-center'>
+          <Typewriter
+            words={[`Khojo`, `Search`]}
+            loop={false}
+            cursor
+            cursorStyle='|'
+            typeSpeed={80}
+            deleteSpeed={80}
+            delaySpeed={1000}
+          />
+          <GiMagnifyingGlass />
+        </span>
+      </div>
 
       {/* All action */}
       <div className='flex flex-wrap items-center justify-center gap-5'>
@@ -75,10 +103,7 @@ const Browse = () => {
           <option value=''>Sorted by</option>
           <option value='intelligence'>Intelligence</option>
           <option value='strength'>Strength</option>
-          <option value='speed'>Speed</option>
-          <option value='durability'>Durability</option>
           <option value='power'>Power</option>
-          <option value='combat'>Combat</option>
         </select>
 
         {/* search */}

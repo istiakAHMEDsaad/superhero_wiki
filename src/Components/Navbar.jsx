@@ -44,7 +44,7 @@ const Navbar = () => {
 
       {/* Navbar Center */}
       <div className='navbar-center'>
-        <a className='btn btn-ghost text-xl font-playwrite'>Superverse</a>
+        <Link to={"/"} className='btn btn-ghost text-xl font-playwrite'>Superverse</Link>
       </div>
 
       {/* Navbar End */}

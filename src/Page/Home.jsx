@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import Aos from 'aos';
+import axios from 'axios';
 
 import { Slide, toast } from 'react-toastify';
 import LimitedCard from '../Components/LimitedCard';
 import Carousel from '../Components/Carousel';
 import { Link } from 'react-router-dom';
+import { GiBatMask } from 'react-icons/gi';
 
 const Home = () => {
   // aos
@@ -16,17 +18,15 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      'https://superhero-api.innovixmatrixsystem.com/api/collections/superheros/records?perPage=6'
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setHeroinfo(data?.items || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('something not right:', err);
-        toast.error('data fetch error', {
+    const fetchLimitData = async () => {
+      try {
+        const res = await axios.get(
+          'https://superhero-api.innovixmatrixsystem.com/api/collections/superheros/records?perPage=6'
+        );
+        setHeroinfo(res?.data?.items || []);
+      } catch (err) {
+        console.error(err?.message || 'Failed to fetch data');
+        toast.error(`${err?.message}`, {
           position: 'top-center',
           autoClose: 1000,
           hideProgressBar: false,
@@ -37,8 +37,11 @@ const Home = () => {
           theme: 'colored',
           transition: Slide,
         });
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+    fetchLimitData();
   }, []);
 
   return (
@@ -53,10 +56,13 @@ const Home = () => {
           <span className='loading loading-spinner text-error loading-xl'></span>
         )}
 
-        <p className='py-5 text-3xl animate__animated animate__flash animate__slower	animate__infinite	infinite'>
-          Meet our superhero
+        <p className='py-5 lg:text-4xl md:text-3xl text-2xl text-gray-700 flex items-center justify-center animate__animated animate__flash animate__slower	animate__infinite	infinite'>
+          Meet our superhero <GiBatMask />
         </p>
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2'>
+        <div
+          data-aos='fade-right'
+          className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2'
+        >
           {heroinfo?.map((hero, idx) => (
             <LimitedCard key={idx} hero={hero} />
           ))}
@@ -64,7 +70,7 @@ const Home = () => {
       </div>
 
       <div className='flex items-center justify-center my-5'>
-        <Link to={'/Browse'} className='btn btn-success'>
+        <Link to={'/Browse'} className='btn btn-neutral'>
           Show more!
         </Link>
       </div>
