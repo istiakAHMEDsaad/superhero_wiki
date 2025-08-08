@@ -2,18 +2,55 @@ import PropTypes from 'prop-types';
 
 const Posts = ({ posts, loading }) => {
   if (loading) {
-    <div className='flex items-center justify-center'>
-      <span className='loading loading-spinner loading-xl text-error'></span>;
-    </div>;
+    return (
+      <div className='flex items-center justify-center'>
+        <span className='loading loading-spinner loading-xl text-error'></span>;
+      </div>
+    );
   }
 
   return (
     // card container
-    <div className=''>
+    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2'>
       {posts.map((post, idx) => (
-        <div key={idx} className='border'>
-          <p>{post?.name}</p>
-          <img src={post?.image?.url} alt='' />
+        <div
+          key={idx}
+          className='flex flex-col border border-gray-300 p-1 rounded-xl shadow hover:scale-[0.99] transition-transform'
+        >
+          {/* image */}
+          <div className=''>
+            <img
+              className='rounded-xl '
+              src={post?.image?.url}
+              alt={post?.name}
+            />
+          </div>
+
+          {/* text */}
+          <div className='text-xl pl-1'>
+            <p className='font-bold'>
+              Name: <span className='font-normal'>{post?.name}</span>
+            </p>
+            <p className='font-bold'>
+              Publisher:{' '}
+              <span className='font-normal'>{post?.biography?.publisher}</span>
+            </p>
+
+            <p className='font-playwrite'>Power Level </p>
+            <p>Intelligence</p>
+            <progress
+              className='progress w-56'
+              value={post?.powerstats?.intelligence}
+              max='100'
+            ></progress>
+            
+            <p>Strength</p>
+            <progress
+              className='progress w-56'
+              value={post?.powerstats?.strength}
+              max='100'
+            ></progress>
+          </div>
         </div>
       ))}
     </div>

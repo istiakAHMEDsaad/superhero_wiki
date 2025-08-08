@@ -10,7 +10,14 @@ const Paginations = ({ postPerPage, totalPosts, paginate, currentPage }) => {
     <div className='mt-8'>
       {pageNumbers?.map((number, idx) => (
         <div key={idx} className='join'>
-          <button onClick={()=>paginate(number)} className={`join-item btn ${number == currentPage ? 'btn-neutral' : ''}`}>{number}</button>
+          <button
+            onClick={() => paginate(number)}
+            className={`join-item btn ${
+              number == currentPage ? 'btn-neutral' : ''
+            }`}
+          >
+            {number}
+          </button>
         </div>
       ))}
     </div>
