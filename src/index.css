@@ -2,6 +2,10 @@
 @import 'tailwindcss';
 @plugin "daisyui";
 
+@plugin "flowbite/plugin";
+@import "flowbite/src/themes/default.css";
+@source "../node_modules/flowbite";
+
 @font-face {
   font-family: Playwrite;
   src: url('./assets/fonts/PlaywriteAUQLD-VariableFont_wght.ttf');

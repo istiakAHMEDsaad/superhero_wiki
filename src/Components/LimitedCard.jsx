@@ -1,0 +1,54 @@
+import PropTypes from 'prop-types';
+
+const LimitedCard = ({ hero }) => {
+  console.log(hero);
+  const {
+    appearance,
+    biography,
+    collectionName,
+    connections,
+    powerstats,
+    work,
+    id,
+    image,
+    name,
+  } = hero || {};
+  console.log(image);
+  return (
+    <div className='lg:w-96 md:w-80 w-72 flex flex-col'>
+      {/* image */}
+      <div className=''>
+        <img className='rounded-xl ' src={image?.url} alt={name} />
+      </div>
+      {/* text */}
+      <div className='text-xl'>
+        <p className='font-bold'>
+          Name: <span className='font-normal'>{name}</span>
+        </p>
+        <p className='font-bold'>
+          Publisher: <span className='font-normal'>{biography?.publisher}</span>
+        </p>
+        
+        <p className='font-playwrite'>Power Level </p>
+        <p>Intelligence</p>
+        <progress
+          className='progress w-56'
+          value={powerstats?.intelligence}
+          max='100'
+        ></progress>
+        <p>Strength</p>
+        <progress
+          className='progress w-56'
+          value={powerstats?.strength}
+          max='100'
+        ></progress>
+      </div>
+    </div>
+  );
+};
+
+LimitedCard.propTypes = {
+  hero: PropTypes.array,
+};
+
+export default LimitedCard;

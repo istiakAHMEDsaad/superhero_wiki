@@ -8,7 +8,7 @@ import slideImageThree from '../assets/img3.jpg';
 
 const slideData = [
   {
-    imgSrc: "../assets/img1.jpg",
+    imgSrc: '../assets/img1.jpg',
     title: 'Deadpool',
     description:
       'Deadpool is a 2016 American superhero film based on the Marvel Comics character of the same name. Directed by Tim Miller (in his directorial debut) and written by Rhett Reese and Paul Wernick, it is a spin-off of the X-Men film series and its overall eighth installment',
