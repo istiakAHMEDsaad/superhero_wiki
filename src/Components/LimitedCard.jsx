@@ -13,7 +13,7 @@ const LimitedCard = ({ hero }) => {
     image,
     name,
   } = hero || {};
-  console.log(image);
+  
   return (
     <div className='lg:w-96 md:w-80 w-72 flex flex-col border border-gray-300 p-1 rounded-xl shadow hover:scale-[0.99] transition-transform'>
       {/* image */}
