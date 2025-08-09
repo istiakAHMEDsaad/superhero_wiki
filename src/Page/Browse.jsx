@@ -2,18 +2,29 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Posts from '../Components/Posts';
 import PaginateButtons from '../Components/PaginateButtons';
+import { useSearchParams } from 'react-router-dom';
 
 const Browse = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, _] = useState(16);
+
+  // set page number to the browse
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialPage = parseInt(searchParams.get('page') || '1');
+
+  const [currentPage, setCurrentPage] = useState(initialPage); //9
+  const [postPerPage, _] = useState(12);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [sortKey, setSortKey] = useState('');
   const [originalPosts, setOriginalPosts] = useState([]);
 
-  const [totalPages, setTotalPages] = useState(1);
+  //also current page
+  const [totalPages, setTotalPages] = useState(1); //16
+
+  useEffect(() => {
+    setSearchParams({ page: currentPage });
+  }, [currentPage, setSearchParams]);
 
   useEffect(() => {
     const fetchPost = async () => {

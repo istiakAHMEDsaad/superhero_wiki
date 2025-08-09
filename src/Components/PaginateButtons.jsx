@@ -1,5 +1,5 @@
 const PaginateButtons = ({ totalPages, currentPage, onPageChange }) => {
-  const pages = [...Array(totalPages).keys()].map((num) => num + 1);
+  const pages = [...Array(totalPages).keys()].map((num) => num + 1);//1-16 value
 
   return (
     <div className='flex gap-2 mt-5 flex-wrap justify-center'>
