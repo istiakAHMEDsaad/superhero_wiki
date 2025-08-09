@@ -14,3 +14,7 @@
   --font-playwrite: Playwrite, 'sans-serif';
   --font-roboto: Roboto, 'sans-serif';
 }
+
+@plugin "daisyui" {
+  themes: all;
+}

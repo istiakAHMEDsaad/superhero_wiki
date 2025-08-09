@@ -11,7 +11,7 @@ const Browse = () => {
   const [loading, setLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(6);
+  const [postPerPage] = useState(8);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [sortKey, setSortKey] = useState('');

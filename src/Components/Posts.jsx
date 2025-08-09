@@ -12,7 +12,7 @@ const Posts = ({ posts, loading }) => {
 
   return (
     // card container
-    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2'>
+    <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-2'>
       {posts.map((post, idx) => (
         <Link to={`/hero-details/${post?.id}`}
           key={idx}
