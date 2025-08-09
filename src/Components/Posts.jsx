@@ -5,7 +5,7 @@ const Posts = ({ posts, loading }) => {
   if (loading) {
     return (
       <div className='flex items-center justify-center'>
-        <span className='loading loading-spinner loading-xl text-error'></span>;
+        <span className='loading loading-spinner loading-xl text-error'></span>
       </div>
     );
   }
